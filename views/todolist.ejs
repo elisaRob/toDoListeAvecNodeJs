@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>To Do Liste</title>
+</head>
+<body>
+    <h1>To do liste</h1>
+
+    <form action="/task" method="POST">
+        <input type="text" placeholder="Nouvelle tâche" name="tache" autofocus required>
+        <button type="submit">Ajouter</button>
+    </form>
+
+    <h3>Tâches</h3>
+
+    <ul>
+        <% lesTaches.forEach((tache,idx)=>{ %>
+            <li>
+                <% if(!tache.done) { %>
+             
+                    <strong><%= idx %></strong>
+                    <%= tache.title %> | <a href="/taches/<%= idx %>/terminee ">Terminée</a>
+        
+                <% }else{%>
+    
+                    <strong><%= idx %></strong>
+                    <s><%= tache.title %></s> | <a href="/taches/<%= idx %>/supprimer">Supprimer</a>
+    
+            <% }}) %>
+            </li>
+    </ul>
+</body>
+</html>
